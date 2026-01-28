@@ -3,104 +3,62 @@
   "name": "ARS Report Line",
   "module": "AlphaX Report Studio",
   "custom": 0,
-  "istable": 0,
-  "is_submittable": 0,
-  "is_tree": 1,
-  "nsm_parent_field": "parent_ars_report_line",
-  "autoname": "field:line_code",
-  "title_field": "line_name",
+  "istable": 1,
+  "issingle": 0,
+  "autoname": "hash",
   "fields": [
     {
-      "fieldname": "format",
-      "label": "Report Format",
-      "fieldtype": "Link",
-      "options": "ARS Report Format",
-      "reqd": 1,
-      "in_list_view": 1
-    },
-    {
-      "fieldname": "line_code",
-      "label": "Line Code",
+      "fieldname": "label",
+      "label": "Label",
       "fieldtype": "Data",
       "reqd": 1,
-      "in_list_view": 1,
-      "unique": 1
-    },
-    {
-      "fieldname": "line_name",
-      "label": "Line Name",
-      "fieldtype": "Data",
-      "reqd": 1,
-      "in_list_view": 1
-    },
-    {
-      "fieldname": "parent_ars_report_line",
-      "label": "Parent Line",
-      "fieldtype": "Link",
-      "options": "ARS Report Line"
-    },
-    {
-      "fieldname": "indent",
-      "label": "Indent",
-      "fieldtype": "Int",
-      "default": 0
-    },
-    {
-      "fieldname": "is_group",
-      "label": "Is Group",
-      "fieldtype": "Check",
-      "default": 0,
       "in_list_view": 1
     },
     {
       "fieldname": "line_type",
       "label": "Line Type",
       "fieldtype": "Select",
-      "options": "Heading\nGroup Total\nAccount Group\nAccount\nFormula\nText",
-      "default": "Text",
+      "options": "Header\nGroup\nAccount\nFormula\nTotal\nBlank",
+      "default": "Account",
       "in_list_view": 1
     },
     {
       "fieldname": "account",
       "label": "Account",
       "fieldtype": "Link",
-      "options": "Account"
+      "options": "Account",
+      "depends_on": "eval:doc.line_type=='Account'"
     },
     {
-      "fieldname": "dimension_filters",
-      "label": "Dimension Filters (JSON)",
-      "fieldtype": "Small Text"
-    },
-    {
-      "fieldname": "operator",
-      "label": "Operator",
-      "fieldtype": "Select",
-      "options": "\n+\n-\n*\n/"
+      "fieldname": "filter_dimension",
+      "label": "Dimension Filter (JSON)",
+      "fieldtype": "Code",
+      "options": "JSON",
+      "description": "Example: {\"branch\":\"Riyadh\"}"
     },
     {
       "fieldname": "formula",
       "label": "Formula",
       "fieldtype": "Data",
-      "description": "Example: L100+L200-L300 (Line Codes)"
+      "depends_on": "eval:doc.line_type=='Formula'",
+      "description": "Example: LINE('Revenue') - LINE('Cost')"
     },
     {
       "fieldname": "bold",
       "label": "Bold",
-      "fieldtype": "Check",
-      "default": 0
+      "fieldtype": "Check"
     },
     {
-      "fieldname": "hide_if_zero",
-      "label": "Hide If Zero",
-      "fieldtype": "Check",
+      "fieldname": "indent",
+      "label": "Indent Level",
+      "fieldtype": "Int",
       "default": 0
     },
     {
       "fieldname": "sort_order",
       "label": "Sort Order",
       "fieldtype": "Int",
-      "default": 0,
-      "in_list_view": 1
+      "default": 0
     }
   ],
   "permissions": [
@@ -110,12 +68,14 @@
       "write": 1,
       "create": 1,
       "delete": 1,
-      "report": 1,
-      "export": 1,
-      "import": 1,
-      "print": 1,
-      "email": 1,
-      "share": 1
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0
     }
-  ]
+  ],
+  "allow_rename": 1,
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "sort_field": "modified",
+  "sort_order": "DESC"
 }

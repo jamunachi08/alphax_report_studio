@@ -1,18 +1,26 @@
 # AlphaX Report Studio (alphax_report_studio)
 
-A clean, installable Frappe app that provides an Excel-style **Report Format Designer**:
-- Define **Report Formats**
-- Define **Report Lines** (groups, headings, totals, formulas)
-- Dimension filters (JSON) for Branch / Cost Center / Project, etc.
+A **report designer** for ERPNext/Frappe that lets you build:
 
-This is a **starter foundation** (clean structure) to stop install issues permanently.
+- Financial statement formats (Trial Balance / P&L / Balance Sheet / Cashflow)
+- MIS breakdown reports (LOB-wise, dimension-wise)
+- Pivot tables (Row/Column grouping + measure aggregation)
+- Charts (bar/line/pie) using Frappe Charts
 
 ## Install
+
 ```bash
-bench get-app alphax_report_studio https://github.com/<YOUR_ORG>/alphax_report_studio.git
-bench --site <yoursite> install-app alphax_report_studio
+bench get-app https://github.com/jamunachi08/AlphaX_MIS_Next.git
+bench --site <site-name> install-app alphax_report_studio
+bench --site <site-name> migrate
 ```
 
-## Doctypes
-- ARS Report Format
-- ARS Report Line
+## Start using
+
+Go to: **Report Studio → ARS Report Format** and create a format.
+
+Open the builder page: **Report Studio → Report Studio Builder**
+
+## Notes
+
+This app is designed to be **install-safe** (hooks don’t assume data).

@@ -1,7 +1,14 @@
 import frappe
 
 def after_install():
-    frappe.db.commit()
+    # Keep installation safe & idempotent
+    try:
+        frappe.db.commit()
+    except Exception:
+        pass
 
 def after_migrate():
-    frappe.db.commit()
+    try:
+        frappe.db.commit()
+    except Exception:
+        pass
