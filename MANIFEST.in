@@ -1,0 +1,9 @@
+include README.md
+include license.txt
+recursive-include alphax_report_studio *.json
+recursive-include alphax_report_studio *.py
+recursive-include alphax_report_studio *.js
+recursive-include alphax_report_studio *.css
+recursive-include alphax_report_studio *.html
+recursive-include alphax_report_studio *.png
+recursive-include alphax_report_studio *.svg
