@@ -1,0 +1,84 @@
+{
+  "doctype": "DocType",
+  "name": "ARS Pivot",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "autoname": "field:title",
+  "fields": [
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "dataset",
+      "fieldtype": "Link",
+      "label": "Dataset",
+      "options": "ARS Dataset",
+      "reqd": 1
+    },
+    {
+      "fieldname": "row_fields",
+      "fieldtype": "Data",
+      "label": "Row Fields",
+      "description": "Comma-separated fieldnames, e.g. branch, cost_center"
+    },
+    {
+      "fieldname": "column_fields",
+      "fieldtype": "Data",
+      "label": "Column Fields",
+      "description": "Comma-separated fieldnames, e.g. month"
+    },
+    {
+      "fieldname": "measure_field",
+      "fieldtype": "Data",
+      "label": "Measure Field",
+      "description": "Field to aggregate (e.g. amount)"
+    },
+    {
+      "fieldname": "agg",
+      "fieldtype": "Select",
+      "label": "Aggregation",
+      "options": "Sum\nCount\nAverage\nMin\nMax",
+      "default": "Sum"
+    },
+    {
+      "fieldname": "filters_json",
+      "fieldtype": "Code",
+      "label": "Default Filters (JSON)",
+      "options": "JSON"
+    },
+    {
+      "fieldname": "limit_rows",
+      "fieldtype": "Int",
+      "label": "Row Limit",
+      "default": 5000
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0,
+      "print": 1,
+      "email": 1,
+      "report": 1,
+      "export": 1,
+      "import": 1,
+      "share": 1
+    }
+  ],
+  "allow_rename": 1,
+  "editable_grid": 0,
+  "engine": "InnoDB",
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

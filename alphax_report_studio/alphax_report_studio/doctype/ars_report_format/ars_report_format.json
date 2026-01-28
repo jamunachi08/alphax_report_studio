@@ -1,0 +1,107 @@
+{
+  "doctype": "DocType",
+  "name": "ARS Report Format",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "autoname": "field:title",
+  "fields": [
+    {
+      "fieldname": "title",
+      "label": "Title",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "report_type",
+      "label": "Report Type",
+      "fieldtype": "Select",
+      "options": "Trial Balance\nP&L\nBalance Sheet\nCashflow\nMIS Breakdown\nCustom",
+      "default": "Custom"
+    },
+    {
+      "fieldname": "data_source_type",
+      "label": "Data Source Type",
+      "fieldtype": "Select",
+      "options": "GL Entry\nAccount\nSales Invoice\nPurchase Invoice\nCustom SQL",
+      "default": "GL Entry"
+    },
+    {
+      "fieldname": "sql_query",
+      "label": "SQL Query (optional)",
+      "fieldtype": "Code",
+      "options": "SQL",
+      "depends_on": "eval:doc.data_source_type=='Custom SQL'"
+    },
+    {
+      "fieldname": "filters_json",
+      "label": "Filters (JSON)",
+      "fieldtype": "Code",
+      "options": "JSON",
+      "description": "Define filters schema for builder page"
+    },
+    {
+      "fieldname": "lines",
+      "label": "Lines",
+      "fieldtype": "Table",
+      "options": "ARS Report Line"
+    },
+    {
+      "fieldname": "pivot_enabled",
+      "label": "Enable Pivot",
+      "fieldtype": "Check",
+      "default": 0
+    },
+    {
+      "fieldname": "pivot_rows",
+      "label": "Pivot Rows (comma-separated fields)",
+      "fieldtype": "Data",
+      "depends_on": "pivot_enabled"
+    },
+    {
+      "fieldname": "pivot_cols",
+      "label": "Pivot Columns (comma-separated fields)",
+      "fieldtype": "Data",
+      "depends_on": "pivot_enabled"
+    },
+    {
+      "fieldname": "pivot_measure",
+      "label": "Pivot Measure Field",
+      "fieldtype": "Data",
+      "depends_on": "pivot_enabled",
+      "default": "amount"
+    },
+    {
+      "fieldname": "chart_enabled",
+      "label": "Enable Chart",
+      "fieldtype": "Check",
+      "default": 0
+    },
+    {
+      "fieldname": "chart_type",
+      "label": "Chart Type",
+      "fieldtype": "Select",
+      "options": "Bar\nLine\nPie",
+      "depends_on": "chart_enabled",
+      "default": "Bar"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0
+    }
+  ],
+  "allow_rename": 1,
+  "editable_grid": 0,
+  "engine": "InnoDB",
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}
