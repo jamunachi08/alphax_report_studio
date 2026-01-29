@@ -1,0 +1,241 @@
+{
+  "doctype": "DocType",
+  "name": "ARS Report Line",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "istable": 1,
+  "issingle": 0,
+  "autoname": "hash",
+  "fields": [
+    {
+      "fieldname": "label",
+      "label": "Label",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "line_type",
+      "label": "Line Type",
+      "fieldtype": "Select",
+      "options": "Field\nFormula\nSubtotal\nGrand Total\nHeading\nBlank\nText\nRatio\nPercentage\nKPI\nPivot Ref\nChart Ref",
+      "default": "Account",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "account",
+      "label": "Account",
+      "fieldtype": "Link",
+      "options": "Account",
+      "depends_on": "eval:doc.line_type=='Account'"
+    },
+    {
+      "fieldname": "filter_dimension",
+      "label": "Dimension Filter (JSON)",
+      "fieldtype": "Code",
+      "options": "JSON",
+      "description": "Example: {\"branch\":\"Riyadh\"}"
+    },
+    {
+      "fieldname": "formula",
+      "label": "Formula",
+      "fieldtype": "Data",
+      "depends_on": "eval:doc.line_type=='Formula'",
+      "description": "Example: LINE('Revenue') - LINE('Cost')"
+    },
+    {
+      "fieldname": "bold",
+      "label": "Bold",
+      "fieldtype": "Check"
+    },
+    {
+      "fieldname": "indent",
+      "label": "Indent Level",
+      "fieldtype": "Int",
+      "default": 0
+    },
+    {
+      "fieldname": "sort_order",
+      "label": "Sort Order",
+      "fieldtype": "Int",
+      "default": 0
+    },
+    {
+      "fieldname": "line_reference",
+      "label": "Line Reference",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "description": "Code to reference this line in formulas (e.g., REV100, EXP200, ASSET100)",
+      "idx": 1
+    },
+    {
+      "fieldname": "display_name",
+      "label": "Display Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "description": "Text displayed on the financial statement (e.g., 'Total Revenue', 'Cash and Cash Equivalents')",
+      "idx": 2
+    },
+    {
+      "fieldname": "indent_level",
+      "label": "Indent Level",
+      "fieldtype": "Int",
+      "default": 0,
+      "description": "Indentation level: 0 = Main heading, 1 = Sub-category, 2 = Individual accounts, etc.",
+      "idx": 3
+    },
+    {
+      "fieldname": "data_source",
+      "label": "Data Source",
+      "fieldtype": "Select",
+      "reqd": 1,
+      "default": "Account Data",
+      "options": "Account Data\nCalculated Amount\nCustom API\nBlank Line\nColumn Break\nSection Break",
+      "description": "How this line gets its data",
+      "idx": 4
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break",
+      "idx": 5
+    },
+    {
+      "fieldname": "value_type",
+      "label": "Value Type",
+      "fieldtype": "Select",
+      "options": "Currency\nFloat\nInt\nPercent",
+      "description": "How to format and present values in the financial report (only if different from column fieldtype)",
+      "idx": 6
+    },
+    {
+      "fieldname": "color",
+      "label": "Color",
+      "fieldtype": "Color",
+      "description": "Color to highlight values (e.g., red for exceptions)",
+      "idx": 7
+    },
+    {
+      "fieldname": "bold_text",
+      "label": "Bold Text",
+      "fieldtype": "Check",
+      "default": 0,
+      "description": "Bold text for emphasis (totals, major headings)",
+      "idx": 8
+    },
+    {
+      "fieldname": "italic_text",
+      "label": "Italic Text",
+      "fieldtype": "Check",
+      "default": 0,
+      "description": "Italic text for subtotals or notes",
+      "idx": 9
+    },
+    {
+      "fieldname": "hidden_line",
+      "label": "Hidden Line (Internal Use Only)",
+      "fieldtype": "Check",
+      "default": 0,
+      "description": "Calculate but don't show on final report",
+      "idx": 10
+    },
+    {
+      "fieldname": "hide_if_zero",
+      "label": "Hide If Zero",
+      "fieldtype": "Check",
+      "default": 0,
+      "description": "Hide this line if amount is zero",
+      "idx": 11
+    },
+    {
+      "fieldname": "reverse_sign",
+      "label": "Reverse Sign",
+      "fieldtype": "Check",
+      "default": 0,
+      "description": "Show negative values as positive (for expenses in P&L)",
+      "idx": 12
+    },
+    {
+      "fieldname": "include_in_charts",
+      "label": "Include in Charts",
+      "fieldtype": "Check",
+      "default": 0,
+      "description": "If enabled, this row's values will be displayed on financial charts",
+      "idx": 13
+    },
+    {
+      "fieldname": "section_break_data",
+      "fieldtype": "Section Break",
+      "label": "Data Settings",
+      "idx": 14
+    },
+    {
+      "fieldname": "balance_type",
+      "label": "Balance Type",
+      "fieldtype": "Select",
+      "options": "Opening Balance\nClosing Balance\nPeriod Movement (Debits - Credits)",
+      "depends_on": "eval:doc.data_source=='Account Data'",
+      "mandatory_depends_on": "eval:doc.data_source=='Account Data'",
+      "description": "Opening Balance = Start of period, Closing Balance = End of period, Period Movement = Net change during period",
+      "idx": 15
+    },
+    {
+      "fieldname": "flag",
+      "label": "Flag (Accounts Set)",
+      "fieldtype": "Link",
+      "options": "AX MIS Flag",
+      "depends_on": "eval:doc.data_source=='Account Data'",
+      "idx": 16
+    },
+    {
+      "fieldname": "advanced_filtering",
+      "label": "Advanced Filtering",
+      "fieldtype": "Check",
+      "default": 0,
+      "depends_on": "eval:doc.data_source=='Account Data'",
+      "description": "Use Python filters to get Accounts",
+      "idx": 17
+    },
+    {
+      "fieldname": "python_filters",
+      "label": "Python Filters",
+      "fieldtype": "Code",
+      "options": "Python",
+      "depends_on": "eval:doc.data_source=='Account Data' && doc.advanced_filtering==1",
+      "description": "Return a list of Account names (strings) or a dict with include/exclude keys",
+      "idx": 18
+    },
+    {
+      "fieldname": "calculated_amount",
+      "label": "Calculated Amount Formula",
+      "fieldtype": "Data",
+      "depends_on": "eval:doc.data_source=='Calculated Amount'",
+      "description": "Formula referencing Line Reference codes, e.g. REV100 - EXP200",
+      "idx": 19
+    },
+    {
+      "fieldname": "custom_api_method",
+      "label": "Custom API Method",
+      "fieldtype": "Data",
+      "depends_on": "eval:doc.data_source=='Custom API'",
+      "description": "Whitelisted method path, e.g. alphax_mis.api.custom_line_amount",
+      "idx": 20
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0
+    }
+  ],
+  "allow_rename": 1,
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

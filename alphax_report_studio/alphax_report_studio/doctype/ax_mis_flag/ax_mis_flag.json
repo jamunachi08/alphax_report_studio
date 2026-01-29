@@ -1,0 +1,50 @@
+{
+  "doctype": "DocType",
+  "name": "AX MIS Flag",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "is_tree": 0,
+  "istable": 0,
+  "editable_grid": 0,
+  "engine": "InnoDB",
+  "autoname": "field:flag_code",
+  "fields": [
+    {
+      "fieldname": "flag_code",
+      "label": "Flag Code",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "description",
+      "label": "Description",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "color",
+      "label": "Color",
+      "fieldtype": "Color"
+    },
+    {
+      "fieldname": "is_active",
+      "label": "Is Active",
+      "fieldtype": "Check",
+      "default": "1"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

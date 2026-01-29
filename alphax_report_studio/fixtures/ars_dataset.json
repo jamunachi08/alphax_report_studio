@@ -1,0 +1,18 @@
+[
+  {
+    "doctype": "ARS Dataset",
+    "name": "TB - Sample SQL",
+    "title": "Trial Balance (Sample SQL)",
+    "source_type": "SQL",
+    "sql_query": "select \n    a.name as account,\n    a.account_name,\n    sum(case when gle.debit > 0 then gle.debit else 0 end) as debit,\n    sum(case when gle.credit > 0 then gle.credit else 0 end) as credit\nfrom `tabGL Entry` gle\njoin `tabAccount` a on a.name = gle.account\nwhere gle.posting_date between %(from_date)s and %(to_date)s\ngroup by a.name, a.account_name\norder by a.name",
+    "default_filters_json": "{\"from_date\":\"2025-01-01\",\"to_date\":\"2025-12-31\"}"
+  },
+  {
+    "doctype": "ARS Dataset",
+    "name": "Sales by Item (Sample SQL)",
+    "title": "Sales by Item (Sample SQL)",
+    "source_type": "SQL",
+    "sql_query": "select \n    sii.item_code,\n    sii.item_name,\n    si.posting_date,\n    sum(sii.qty) as qty,\n    sum(sii.base_net_amount) as net_amount\nfrom `tabSales Invoice Item` sii\njoin `tabSales Invoice` si on si.name = sii.parent\nwhere si.docstatus = 1\n  and si.posting_date between %(from_date)s and %(to_date)s\ngroup by sii.item_code, sii.item_name, si.posting_date\norder by si.posting_date, sii.item_code",
+    "default_filters_json": "{\"from_date\":\"2025-01-01\",\"to_date\":\"2025-12-31\"}"
+  }
+]

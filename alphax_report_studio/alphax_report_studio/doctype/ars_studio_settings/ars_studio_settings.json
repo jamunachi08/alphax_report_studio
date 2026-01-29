@@ -1,0 +1,58 @@
+{
+  "doctype": "DocType",
+  "name": "ARS Studio Settings",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "issingle": 1,
+  "istable": 0,
+  "autoname": "prompt",
+  "fields": [
+    {
+      "fieldname": "section_defaults",
+      "label": "Defaults",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "default_lob_field",
+      "label": "Default LOB Field (for GL)",
+      "fieldtype": "Select",
+      "options": "department\ncost_center\nbranch\nproject\ncustom_division\ncustom_lob",
+      "default": "department",
+      "reqd": 0
+    },
+    {
+      "fieldname": "default_main_dataset",
+      "label": "Default Main Dataset",
+      "fieldtype": "Link",
+      "options": "ARS Dataset",
+      "reqd": 0
+    },
+    {
+      "fieldname": "enable_sql_tokens",
+      "label": "Enable SQL Tokens ({{LOB_FIELD}})",
+      "fieldtype": "Check",
+      "default": 1
+    },
+    {
+      "fieldname": "note",
+      "label": "Usage Notes",
+      "fieldtype": "Small Text",
+      "read_only": 1,
+      "default": "Use {{LOB_FIELD}} in ARS Dataset SQL to dynamically map LOB/Dimension field."
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Accounts Manager",
+      "read": 1,
+      "write": 1
+    }
+  ]
+}

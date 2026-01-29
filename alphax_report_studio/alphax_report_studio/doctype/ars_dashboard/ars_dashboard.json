@@ -1,0 +1,51 @@
+{
+  "doctype": "DocType",
+  "name": "ARS Dashboard",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "autoname": "field:title",
+  "fields": [
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "items",
+      "fieldtype": "Table",
+      "label": "Dashboard Items",
+      "options": "ARS Dashboard Item"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0,
+      "print": 1,
+      "email": 1,
+      "report": 1,
+      "export": 1,
+      "import": 1,
+      "share": 1
+    }
+  ],
+  "allow_rename": 1,
+  "editable_grid": 0,
+  "engine": "InnoDB",
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

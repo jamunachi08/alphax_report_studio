@@ -1,0 +1,81 @@
+{
+  "doctype": "DocType",
+  "name": "ARS Chart",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "autoname": "field:title",
+  "fields": [
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "pivot",
+      "fieldtype": "Link",
+      "label": "Pivot",
+      "options": "ARS Pivot"
+    },
+    {
+      "fieldname": "dataset",
+      "fieldtype": "Link",
+      "label": "Dataset",
+      "options": "ARS Dataset",
+      "depends_on": "eval:!doc.pivot"
+    },
+    {
+      "fieldname": "chart_type",
+      "fieldtype": "Select",
+      "label": "Chart Type",
+      "options": "Bar\nLine\nPie\nArea\nStacked Bar\nCombo",
+      "default": "Bar"
+    },
+    {
+      "fieldname": "x_field",
+      "fieldtype": "Data",
+      "label": "X Field"
+    },
+    {
+      "fieldname": "y_field",
+      "fieldtype": "Data",
+      "label": "Y Field"
+    },
+    {
+      "fieldname": "series_field",
+      "fieldtype": "Data",
+      "label": "Series Field"
+    },
+    {
+      "fieldname": "options_json",
+      "fieldtype": "Code",
+      "label": "Options (JSON)",
+      "options": "JSON"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0,
+      "print": 1,
+      "email": 1,
+      "report": 1,
+      "export": 1,
+      "import": 1,
+      "share": 1
+    }
+  ],
+  "allow_rename": 1,
+  "editable_grid": 0,
+  "engine": "InnoDB",
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

@@ -1,0 +1,73 @@
+{
+  "doctype": "DocType",
+  "name": "ARS Measure",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "autoname": "field:title",
+  "fields": [
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "label": "Title",
+      "reqd": 1
+    },
+    {
+      "fieldname": "source_field",
+      "fieldtype": "Data",
+      "label": "Source Field",
+      "reqd": 1
+    },
+    {
+      "fieldname": "agg",
+      "fieldtype": "Select",
+      "label": "Default Aggregation",
+      "options": "Sum\nCount\nAverage\nMin\nMax",
+      "default": "Sum"
+    },
+    {
+      "fieldname": "format",
+      "fieldtype": "Select",
+      "label": "Format",
+      "options": "Number\nCurrency\nPercent",
+      "default": "Number"
+    },
+    {
+      "fieldname": "currency",
+      "fieldtype": "Link",
+      "label": "Currency",
+      "options": "Currency",
+      "depends_on": "eval:doc.format=='Currency'"
+    },
+    {
+      "fieldname": "precision",
+      "fieldtype": "Int",
+      "label": "Precision",
+      "default": 2
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0,
+      "print": 1,
+      "email": 1,
+      "report": 1,
+      "export": 1,
+      "import": 1,
+      "share": 1
+    }
+  ],
+  "allow_rename": 1,
+  "editable_grid": 0,
+  "engine": "InnoDB",
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}
