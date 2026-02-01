@@ -1,0 +1,3 @@
+
+# Windows reserved device file (breaks git)
+nul

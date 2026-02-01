@@ -1,0 +1,52 @@
+[
+  {
+    "doctype": "ARS Report Format",
+    "name": "Trial Balance - Sample",
+    "title": "Trial Balance - Sample",
+    "dataset": "TB - Sample SQL",
+    "report_type": "Table",
+    "show_filters": 1,
+    "columns_json": "[{\"fieldname\": \"account\", \"label\": \"Account\", \"fieldtype\": \"Link\", \"options\": \"Account\", \"width\": 200}, {\"fieldname\": \"account_name\", \"label\": \"Account Name\", \"fieldtype\": \"Data\", \"width\": 260}, {\"fieldname\": \"debit\", \"label\": \"Debit\", \"fieldtype\": \"Currency\", \"width\": 120}, {\"fieldname\": \"credit\", \"label\": \"Credit\", \"fieldtype\": \"Currency\", \"width\": 120}]",
+    "lines": [
+      {
+        "doctype": "ARS Report Line",
+        "line_type": "Header",
+        "label": "Trial Balance",
+        "display_name": "Trial Balance",
+        "line_reference": "TRIAL_BALA_01",
+        "data_source": "Blank Line"
+      },
+      {
+        "doctype": "ARS Report Line",
+        "line_type": "Data",
+        "label": "Details",
+        "data_mode": "DATASET_ROWS",
+        "display_name": "Details",
+        "line_reference": "TRIAL_BALA_02",
+        "data_source": "Account Data"
+      },
+      {
+        "doctype": "ARS Report Line",
+        "line_type": "Total",
+        "label": "Total",
+        "total_columns": "debit,credit",
+        "display_name": "Total",
+        "line_reference": "TRIAL_BALA_03",
+        "data_source": "Calculated Amount"
+      }
+    ]
+  },
+  {
+    "doctype": "ARS Report Format",
+    "name": "Sales Pivot - Sample",
+    "title": "Sales Pivot - Sample (Pivot + Chart)",
+    "dataset": "Sales by Item (Sample SQL)",
+    "report_type": "Pivot",
+    "show_filters": 1,
+    "pivot_rows": "item_code",
+    "pivot_columns": "posting_date",
+    "pivot_values": "net_amount",
+    "pivot_agg": "sum",
+    "chart_type": "Line"
+  }
+]

@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alphax_report_studio"
+version = "1.4.0"
+description = "Excel-style MIS & Financial Report Designer + Pivot + Charts"
+authors = [{name="IRSAA / AlphaX"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []

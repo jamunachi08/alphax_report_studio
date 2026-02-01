@@ -1,0 +1,9 @@
+{
+  "doctype": "Page",
+  "name": "ars-wizard",
+  "module": "AlphaX Report Studio",
+  "title": "AlphaX Report Wizard",
+  "icon": "octicon octicon-milestone",
+  "standard": 1,
+  "system_page": 0
+}

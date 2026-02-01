@@ -1,0 +1,2 @@
+alphax_report_studio.patches.v15_0.fix_ars_report_line_schema
+alphax_report_studio.patches.v15_0.reload_doctypes

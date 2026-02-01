@@ -1,0 +1,111 @@
+{
+  "doctype": "DocType",
+  "name": "ARS Settings",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 1,
+  "editable_grid": 0,
+  "engine": "InnoDB",
+  "field_order": [
+    "section_break_1",
+    "gl_entry_doctype",
+    "account_field",
+    "debit_field",
+    "credit_field",
+    "date_field",
+    "department_field",
+    "lob_field",
+    "currency_field",
+    "section_break_2",
+    "enable_wizard",
+    "default_dataset_name"
+  ],
+  "fields": [
+    {
+      "fieldname": "section_break_1",
+      "fieldtype": "Section Break",
+      "label": "Defaults"
+    },
+    {
+      "fieldname": "gl_entry_doctype",
+      "fieldtype": "Data",
+      "label": "GL Entry Doctype",
+      "default": "GL Entry"
+    },
+    {
+      "fieldname": "account_field",
+      "fieldtype": "Data",
+      "label": "Account Field",
+      "default": "account"
+    },
+    {
+      "fieldname": "debit_field",
+      "fieldtype": "Data",
+      "label": "Debit Field",
+      "default": "debit"
+    },
+    {
+      "fieldname": "credit_field",
+      "fieldtype": "Data",
+      "label": "Credit Field",
+      "default": "credit"
+    },
+    {
+      "fieldname": "date_field",
+      "fieldtype": "Data",
+      "label": "Posting Date Field",
+      "default": "posting_date"
+    },
+    {
+      "fieldname": "department_field",
+      "fieldtype": "Data",
+      "label": "Department Field (Dimension)",
+      "default": "department"
+    },
+    {
+      "fieldname": "lob_field",
+      "fieldtype": "Data",
+      "label": "LOB Field (Dimension)",
+      "default": "department",
+      "description": "Set your LOB dimension field name (e.g. department, cost_center, custom_line_of_business)."
+    },
+    {
+      "fieldname": "currency_field",
+      "fieldtype": "Data",
+      "label": "Currency Field",
+      "default": "account_currency"
+    },
+    {
+      "fieldname": "section_break_2",
+      "fieldtype": "Section Break",
+      "label": "Wizard"
+    },
+    {
+      "fieldname": "enable_wizard",
+      "fieldtype": "Check",
+      "label": "Enable Wizard UI",
+      "default": 1
+    },
+    {
+      "fieldname": "default_dataset_name",
+      "fieldtype": "Data",
+      "label": "Default Dataset Name",
+      "default": "NISA_GL_BASE"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

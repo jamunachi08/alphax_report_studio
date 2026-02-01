@@ -1,0 +1,68 @@
+{
+  "doctype": "DocType",
+  "name": "ARS Dataset",
+  "module": "AlphaX Report Studio",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "autoname": "field:title",
+  "fields": [
+    {
+      "fieldname": "title",
+      "label": "Title",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "source_type",
+      "label": "Source Type",
+      "fieldtype": "Select",
+      "options": "Query Report\nDocType\nCustom SQL",
+      "default": "DocType"
+    },
+    {
+      "fieldname": "doctype_name",
+      "label": "DocType",
+      "fieldtype": "Link",
+      "options": "DocType",
+      "depends_on": "eval:doc.source_type=='DocType'"
+    },
+    {
+      "fieldname": "query_report",
+      "label": "Query Report",
+      "fieldtype": "Link",
+      "options": "Report",
+      "depends_on": "eval:doc.source_type=='Query Report'"
+    },
+    {
+      "fieldname": "sql_query",
+      "label": "SQL Query",
+      "fieldtype": "Code",
+      "options": "SQL",
+      "depends_on": "eval:doc.source_type=='Custom SQL'"
+    },
+    {
+      "fieldname": "default_filters_json",
+      "label": "Default Filters (JSON)",
+      "fieldtype": "Code",
+      "options": "JSON"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 0,
+      "cancel": 0,
+      "amend": 0
+    }
+  ],
+  "allow_rename": 1,
+  "editable_grid": 0,
+  "engine": "InnoDB",
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}
